@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Vibsbro</string>
+
+    <string name="title_activity_welcome">welcome</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="facebook_app_id">1343921432363262</string>
+</resources>

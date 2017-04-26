@@ -1,6 +1,10 @@
 package com.vibs.vibsbro;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.graphics.Color;
 import android.view.View;
+import android.view.animation.Animation;
 
 import java.util.Calendar;
 
@@ -38,4 +42,9 @@ public class CommonUtil {
 
         return greeting;
     }
+
+    public static void colorAnimation() {
+
+    }
+
 }

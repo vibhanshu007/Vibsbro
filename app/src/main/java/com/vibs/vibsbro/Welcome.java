@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.widget.TextView;
 
 /**
@@ -15,7 +14,7 @@ public class Welcome extends Activity {
     public static final int WELCOME_TIMEOUT=3000;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         CommonUtil.hideSystemUI(getWindow().getDecorView());

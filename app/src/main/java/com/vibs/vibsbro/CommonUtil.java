@@ -1,11 +1,16 @@
 package com.vibs.vibsbro;
 
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
+import android.graphics.drawable.PaintDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.ArcShape;
+import android.graphics.drawable.shapes.OvalShape;
+import android.graphics.drawable.shapes.PathShape;
+import android.graphics.drawable.shapes.RectShape;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.view.View;
-import android.view.animation.Animation;
-
 import java.util.Calendar;
 
 /**
@@ -43,8 +48,20 @@ public class CommonUtil {
         return greeting;
     }
 
-    public static void colorAnimation() {
-
+    public static PaintDrawable customGradients(final int[] colorList, final float[] colorListValue){
+        ShapeDrawable.ShaderFactory shaderFactory = new ShapeDrawable.ShaderFactory() {
+            @Override
+            public Shader resize(int height, int width) {
+                LinearGradient linearGradient = new LinearGradient(0,0,height,width,
+                        colorList,
+                        colorListValue, Shader.TileMode.REPEAT);
+                return linearGradient;
+            }
+        };
+        PaintDrawable p=new PaintDrawable();
+        p.setShape(new RectShape());
+        p.setShaderFactory(shaderFactory);
+        return  p;
     }
 
 }

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/login_parent"
+    android:background="@drawable/login_gradient"
     tools:context="com.vibs.vibsbro.MainActivity">
 
     <LinearLayout

@@ -5,4 +5,6 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="facebook_app_id">1343921432363262</string>
+    <string name="singup_text">No Account yet? Create One.</string>
+    <string name="forgot_password">forgot password? </string>
 </resources>

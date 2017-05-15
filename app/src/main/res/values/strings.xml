@@ -5,6 +5,22 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="facebook_app_id">1343921432363262</string>
-    <string name="singup_text">No Account yet? Create One.</string>
-    <string name="forgot_password">forgot password? </string>
+    <string name="text_not_member">No Account yet? Create One.</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="text_register">Resister</string>
+    <string name="login">Log In</string>
+    <string name="error_message_name">Enter Full Name</string>
+    <string name="error_message_email">Enter Valid Email</string>
+    <string name="error_message_age">Enter Age</string>
+    <string name="error_message_password">Enter Password</string>
+    <string name="success_message">Registration Successful</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_signup_home">SignupActivity</string>
+    <string name="error_email_exists">Email Already Exists</string>
+    <string name="error_password_match">Password Does Not Matches</string>
+    <string name="error_valid_email_password">Wrong Email or Password</string>
+
 </resources>

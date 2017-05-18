@@ -122,12 +122,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
                 , textInputEditTextPassword.getText().toString().trim())) {
 
-
             Intent accountsIntent = new Intent(MainActivity.this, HomeActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
             emptyInputEditText();
             startActivity(accountsIntent);
-
+            finish();
 
         } else {
             // Snack Bar to show success message that record is wrong
@@ -152,15 +151,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
             public void onSuccess(LoginResult loginResult) {
                 /*loginTextview.setText("Login Successfully \n" +loginResult.getAccessToken()
                         .getUserId()+"\n"+loginResult.getAccessToken().getToken());*/
-
             }
 
             @Override
             public void onCancel() {
                // loginTextview.setText("Login Cancel");
-
             }
-
             @Override
             public void onError(FacebookException error) {
 

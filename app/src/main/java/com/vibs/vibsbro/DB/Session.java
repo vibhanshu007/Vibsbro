@@ -14,11 +14,13 @@ public class Session {
 
     public Session(Context context){
         this.context= context;
-        sharedPreferences= context.getSharedPreferences("myapp",Context.MODE_PRIVATE);
-        sharedPreferences.edit();
+        sharedPreferences= context.getSharedPreferences("UserManager",Context.MODE_PRIVATE);
+
     }
     public void setLogin(boolean login){
+        editor=sharedPreferences.edit();
         editor.putBoolean("LoginMode",login);
+        editor.commit();
 
     }
     public boolean login(){

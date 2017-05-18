@@ -10,6 +10,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.view.View;
 
 import com.facebook.CallbackManager;
@@ -21,6 +22,7 @@ import com.facebook.login.widget.LoginButton;
 import com.squareup.picasso.Picasso;
 import com.vibs.vibsbro.DB.DataBaseHelper;
 import com.vibs.vibsbro.DB.InputValidation;
+import com.vibs.vibsbro.DB.Session;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -37,6 +39,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private DataBaseHelper databaseHelper;
     CallbackManager callbackManager;
     LoginButton fbLoginButton;
+    private Session session;
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
@@ -46,8 +49,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         setContentView(R.layout.activity_login);
-
         initViews();
+        initListner();
+        initObjects();
+
+        session = new Session(this);
+        if (session.login()){
+            Log.e("CHECK POINT","CHECK POINT 0");
+            startActivity(new Intent(MainActivity.this,HomeActivity.class));
+            finish();
+        }
 
         //Picasso section
         Picasso
@@ -55,9 +66,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 .load(R.drawable.logo)
                 .resize(150,200)
                 .into(imageViewLogo);
-
-        initListner();
-        initObjects();
         fbIntegration(); //facebook integration
 
     }
@@ -92,6 +100,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         switch (view.getId()) {
             case R.id.appCompatButtonLogin:
+                Log.e("CHECK POINT","CHECK POINT 1");
                 verifyFromSQLite();
                 break;
             case R.id.textViewLinkRegister:
@@ -106,6 +115,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
      * This method is to validate the input text fields and verify login credentials from SQLite
      */
     private void verifyFromSQLite() {
+
         if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail,
                 getString(R.string.error_message_email))) {
             return;
@@ -118,10 +128,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 getString(R.string.error_message_email))) {
             return;
         }
+        Log.e("CHECK POINT","CHECK POINT 2");
 
         if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
                 , textInputEditTextPassword.getText().toString().trim())) {
-
+            session.setLogin(true);
+            Log.e("CHECK POINT","CHECK POINT 3");
             Intent accountsIntent = new Intent(MainActivity.this, HomeActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
             emptyInputEditText();
